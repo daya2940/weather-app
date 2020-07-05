@@ -1,0 +1,33 @@
+<div class="component mt-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4" *ngFor="let item of arr; let i =index">
+      <mat-card class="mt-2 text-center">
+        <button (click)="openDialog(i,city)">show Data</button>
+        <mat-card-content>
+          <p>{{item}}</p>
+          <div *ngIf="cityWeatherData && cardNumber===i" class="ml-md-3">
+            <div class="weather-icon">
+              <img [src]="source">
+            </div>
+            <p>{{cityWeatherData.name}}</p>
+            <div>
+              <p>lattitude <span class="ml-2">{{cityWeatherData.coord.lat}}</span></p>
+              <p>longitude<span class="ml-2">{{cityWeatherData.coord.lon}}</span></p>
+            </div>
+            <div>
+              <p>humidity<span class="ml-2">{{cityWeatherData.main.humidity}}</span></p>
+              <p>pressure<span class="ml-2">{{cityWeatherData.main.pressure}}</span></p>
+              <p>temperature<span class="ml-2">{{cityWeatherData.main.temp}}</span></p>
+            </div>
+            <div>
+              <p>weather</p>
+              <p>{{cityWeatherData.weather[0].main}}</p>
+              <p>{{cityWeatherData.weather[0].description}}</p>
+            </div>
+            <button matbutton (click)="update(city)">Edit city name</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
